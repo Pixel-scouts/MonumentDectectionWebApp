@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Success</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Upload Successful</h2>
+            <p class="text-center">Your image has been uploaded successfully.</p>
+        </div>
+    </div>
+    
+    {% if img_object %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <img src="{{ img_object.image.url }}" alt="Uploaded Image" class="img-fluid rounded" style="max-height:300px">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+        
+    <!-- Predict Monument Button -->
+    <div class="row mt-3">
+        <div class="col-md-12 text-center">
+            <form action="{% url 'predict' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="image_path" value="{{ img_object.image.url }}">
+    
+                <button type="submit" class="btn btn-primary">Predict Monument</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="row mt-3">
+        <div class="col-md-12 text-center">
+            <a href="{% url 'monuments' %}" class="btn btn-primary">Upload Another Image</a>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Prediction Result</h1>
+        
+        <!-- Display the predicted image -->
+        {% if image_path %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <img src="{{ image_path }}" class="img-fluid rounded" alt="Predicted Image">
+                {% comment %} <img src="C:\Users\DELL\MonumentsDetection\predicted_image\predicted_image.png" class="img-fluid rounded" alt="Predicted Image"> {% endcomment %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Display additional prediction information -->
+
+        <!-- Next Image Button -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6 text-center">
+                <a href="{% url 'monuments' %}" class="btn btn-primary">Next Image</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
