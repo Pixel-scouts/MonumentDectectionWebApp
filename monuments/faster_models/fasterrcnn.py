@@ -155,6 +155,24 @@ def filter_pred(predicted):
         filtered_predictions.append(filtered_pred)
     return filtered_predictions
 
+CLASSES = [
+           'Akash Bhairav',
+            'Bhadrakali Temple',
+              'Jalbinayak',
+                'Lumadhi Bhadrakali Temple Sankata',
+                  'Maitidevi Temple',
+                    'Patan Dhoka',
+                      'Sano Pashupati',
+                        'Swoyambhunath',
+                          'Tridevi Temple',
+                            'ashok stupa',
+                              'birupakshya',
+                                'chamunda mai',
+                                  'charumati',
+                                    'mahadev temple',
+                                      'taleju bell_KDS',
+                                        'pratappur temple']
+
 classes=['Akash Bhairav','ashok stupa','Badrinath','Bagbairav',
 'Balkumari, Bhaktapur',
 'BalNilkantha',

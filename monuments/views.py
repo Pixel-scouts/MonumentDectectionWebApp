@@ -4,7 +4,7 @@ from django.template import loader
 from .forms import ImageUploadForm
 from django.conf import settings
 from datetime import datetime
-from monuments.faster_models.fasterrcnn import fasterrcnn_resnet50_fpn, filter_pred, classes
+from monuments.faster_models.fasterrcnn import fasterrcnn_resnet50_fpn, filter_pred, classes, CLASSES
 import numpy as np
 import os
 import torch
@@ -87,7 +87,7 @@ def predict(request):
                 )
                 axs.add_patch(rect)
                 axs.text(
-                    box[0], box[1] - 5,f'{classes[int(labels[j])]}' , color='r', fontsize=10,
+                    box[0], box[1] - 5,f'{CLASSES[int(labels[j])]}' , color='r', fontsize=10,
                     bbox=dict(facecolor='white', alpha=0.8, edgecolor='none', boxstyle='round,pad=0.2')
                 )
 
