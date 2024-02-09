@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from .forms import ImageUploadForm
 from django.conf import settings
@@ -21,6 +21,7 @@ def monuments(request):
     return render(request, 'index.html')
 
 def index(request):
+    # return render(request, 'loader_template.html')
     return render(request, 'welcome.html')
 
 def upload(request):
@@ -103,6 +104,7 @@ def predict(request):
             print(image_path)
 
             return render(request, 'predict.html',{'image_path':image_path})
+            # return JsonResponse({'success': True, 'image_path': image_path})
     
     # return render(request,'predict.html')
     return HttpResponse('reaching to this message is not possible', status=403)
