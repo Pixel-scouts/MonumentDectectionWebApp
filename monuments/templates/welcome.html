@@ -38,9 +38,13 @@
         <div class="jumbotron text-center">
             <h1>Welcome to Monuments Prediction</h1>
             <p class="lead">Explore and predict monuments with our advanced AI model.</p>
-            
-            <!-- Start Button -->
-            <a href="{% url 'monuments' %}" class="btn btn-primary btn-lg mt-4">Start</a>
+            <form action="{% url 'monuments' %}" method="get">
+              <div>
+                <button type="submit" class="btn btn-primary btn-lg mt-4">Start</button>
+              </div>
+
+            </form>
+
         </div>
     </div>
     <br><br>
@@ -94,7 +98,7 @@
       <div class="mline bg-light"></div>
     </div>
       <div class="col-6 py-2">
-              <small class="lighter op-7">&copy 2017 UnderExpress</small>
+              <small class="lighter op-7"></small>
       </div>
     </div>
   </footer>

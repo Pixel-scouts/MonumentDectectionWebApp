@@ -15,7 +15,41 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/plugins/animatecss/css/animate.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/styles.css' %}">
-
+    <style>
+      /* Style for Dropzone container */
+      .dropzone {
+          border: 2px dashed #0087F7;
+          border-radius: 8px;
+          background: #f0f0f0;
+          padding: 20px;
+          margin: 20px 0;
+      }
+  
+      /* Style for the "Select Image" label */
+      .form-group label {
+          font-weight: bold;
+      }
+  
+      /* Style for the upload button */
+      .form-group.text-center {
+          margin-top: 20px;
+      }
+  
+      .btn-primary {
+          background-color: #0087F7;
+          border-color: #0087F7;
+      }
+  
+      .btn-primary:hover {
+          background-color: #0066CC;
+          border-color: #0066CC;
+      }
+      .form-control-file {
+        display: block;
+        margin: 0 auto; /* This centers the input field horizontally */
+    }
+  </style>
+  
 </head>
 
 {% comment %} <body class="bg-dark-gradient"> {% endcomment %}
@@ -34,7 +68,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent6">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item active mx-2">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Contact</a>
@@ -48,7 +82,7 @@
 
 
 
-    <div class="container mt-5">
+   <div class="container mt-5">
         <div class="row">
             <div class="col-md-12 text-center">
                 <h1>Monument Detection</h1>
@@ -62,10 +96,14 @@
                 id="my-awesome-dropzone">
                     {% csrf_token %} <!-- This is the Django CSRF token -->
 
-                    <div class="form-group">
-                        <label for="image" class="font-weight-bold">Select Image:</label>
-                        <input type="file" class="form-control-file" id="image" name="image" required>
-                    </div> 
+                    <div class="form-group text-center">
+                      <label for="image" class="font-weight-bold d-block">Select Image:</label>
+                      <div class="mx-auto" style="width: fit-content;">
+                          <input type="file" class="form-control-file" id="image" name="image" required style="width:70%;">
+                      </div>
+                  </div>
+                  
+                   
 
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">Upload</button>
@@ -73,36 +111,10 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
     
-      <br><br>
-      <section class="bg-light">
-		<div class="container">
-
-			<div class="row">
-
-
-				<div class="col-12 col-lg-6 p-5 background-cover"  style="background-image:url('{% static 'assets/img/backgrounds/Patan.jpg' %}')">
-					<div class="p-relative p-5 m-5"></div>
-
-				</div>
-				<div class="col-12 col-lg-6 p-5">
-				 
-
-					<h6 class="py-4"><i>"Monuments are the grappling-irons that bind one generation to another."  </i></h6>
-
-				 
-					<h6>-Gustave Eiffel
-                    </h6>
-
-
-				</div>
-			</div>
-		</div>
-	</section>
 
 <br><br>
- 
 <!-- Component Footer 10 start -->
 <footer class="footer-style-6 p-3 bg-hue-dark cwhite background-cover" style="background-image: url('{% static 'assets/img/backgrounds/monuments2.jpg' %}');">
     <div class="row">
@@ -153,7 +165,7 @@
       <div class="mline bg-light"></div>
     </div>
       <div class="col-6 py-2">
-              <small class="lighter op-7">&copy 2017 UnderExpress</small>
+              <small class="lighter op-7"></small>
       </div>
     </div>
   </footer>
@@ -175,6 +187,11 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108011681-1"></script>
 <script>
+  {% comment %} $(document).ready(function(){
+    $('form input').change(function () {
+      $('form p').text(this.files.length + " file(s) selected");
+    });
+  }); {% endcomment %}
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

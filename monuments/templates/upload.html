@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent6">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item active mx-2">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Contact</a>
@@ -36,6 +36,7 @@
         </div>
     </nav>
     <br><br>
+    <br>
 {% comment %} 
 <div class="container mt-5">
     <div class="row">
@@ -85,15 +86,19 @@
             </div>
             <div class="col-12 col-lg-6 p-5">
              
-
-                <h6 class="py-4 text-center"><i>Upload Successful</i></h6>
                 <div class="row mt-3">
                     <div class="col-md-12 text-center">
                         <form action="{% url 'predict' %}" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <input type="hidden" name="image_path" value="{{ img_object.image.url }}">
-                
+                            <h5>Choose the Model</h5>
+                            <input type="radio" name="model" value="base_model"> Base Model
+                            <input type="radio" name="model" value="meta_learning"> Meta learning
+                            <input type="radio" name="model" value="mnad"> MNAD
+                            <br><br>
+                          <div>                            
                             <button type="submit" class="btn btn-primary">Predict Monument</button>
+                          </div>
                         </form>
                     </div>
                 </div>
@@ -109,6 +114,7 @@
     </div>
 </section>
 <br><br>
+<br>
 <!-- Component Footer 10 start -->
 <!-- Component Footer 10 start -->
 <footer class="footer-style-6 p-3 bg-hue-dark cwhite background-cover" style="background-image: url('{% static 'assets/img/backgrounds/monuments2.jpg' %}');">
@@ -160,7 +166,7 @@
       <div class="mline bg-light"></div>
     </div>
       <div class="col-6 py-2">
-              <small class="lighter op-7">&copy 2017 UnderExpress</small>
+              <small class="lighter op-7"></small>
       </div>
     </div>
   </footer>
